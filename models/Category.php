@@ -60,7 +60,7 @@
         //create a new author 
         public function create(){
             //create query
-            $query = "INSERT INTO '.$this->table.' (category) 
+            $query = "INSERT INTO ".$this->table." (category) 
                     VALUES(:category)";
 
             //perpare
@@ -82,7 +82,7 @@
 
         public function update(){
             //create query
-            $query = "UPDATE '.$this->table.' 
+            $query = "UPDATE ".$this->table." 
                     SET category = :category 
                     WHERE id = :id";
                     
@@ -112,7 +112,7 @@
         }
 
         public function delete(){
-            $query = "DELETE FROM  '.$this->table.' 
+            $query = "DELETE FROM  ".$this->table." 
                     WHERE id = :id";
 
             $stmt = $this->conn->prepare($query);

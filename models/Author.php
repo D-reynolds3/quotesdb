@@ -16,7 +16,7 @@
         public function read(){
             //query
             $query = "SELECT id, author, 
-                    FROM '.$this->table.' 
+                    FROM ".$this->table." 
                     ORDER BY id ASC";
         
 
@@ -33,7 +33,7 @@
         public function read_single(){
             //create query
             $query = "SELECT id, author 
-                    FROM '.$this->table.' 
+                    FROM ".$this->table." 
                     WHERE id = :id
                     LIMIT 1 OFFSET 0 ";
 
@@ -60,7 +60,7 @@
         //create a new author 
         public function create(){
             //create query
-            $query = "INSERT INTO  '.$this->table.'  (authors) 
+            $query = "INSERT INTO  ".$this->table."  (authors) 
                     VALUES(:author)";
 
             //perpare
@@ -82,7 +82,7 @@
 
         public function update(){
             //create query
-            $query = "UPDATE '.$this->table.' (authors)
+            $query = "UPDATE ".$this->table." (authors)
                      VALUES(:author)";
             
             //prepare clean and bind
@@ -110,7 +110,7 @@
         }
 
         public function delete(){
-            $query = "DELETE FROM  '.$this->table.' 
+            $query = "DELETE FROM  ".$this->table." 
                     WHERE id = :id";
 
             $stmt = $this->conn->prepare($query);
