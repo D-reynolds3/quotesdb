@@ -35,8 +35,7 @@ class Quote {
                     q.quote,
                     a.author as author,
                     c.category as category                 
-                     FROM ".$this->table." q
-                    INNER JOIN authors a on q.author_id = a.id
+                     FROM ".$this->table." q INNER JOIN authors a on q.author_id = a.id
                     INNER JOIN categories c on q.category_id = c.id 
                     WHERE a.id = :author_id";
         } 
@@ -48,7 +47,7 @@ class Quote {
                     q.quote,
                     a.author as author,
                     c.category as category                
-                    FROM  ".$this->table." q
+                    FROM  '.$this->table.' q
                     INNER JOIN authors a on q.author_id = a.id
                     INNER JOIN categories c on q.category_id = c.id 
                     WHERE c.id = :category_id";
@@ -60,7 +59,7 @@ class Quote {
                     q.quote,
                     a.author as author,
                     c.category as category              
-                    FROM ".$this->table." q
+                    FROM '.$this->table.' q
                     INNER JOIN authors a on q.author_id = a.id
                     INNER JOIN categories c on q.category_id = c.id 
                     ORDER BY q.id ASC";
@@ -81,7 +80,7 @@ public function read_single() {
                     q.quote,
                     a.author as author,
                     c.category as category               
-            FROM ".$this->table." q
+            FROM '.$this->table.' q
             INNER JOIN authors a on q.author_id = a.id
             INNER JOIN categories c on q.category_id = c.id 
             WHERE q.id = :id
@@ -111,7 +110,7 @@ else {
 public function create() {
     // create a query
     $query = "INSERT INTO 
-        ".$this->table." (quote, author_id, category_id) 
+        '.$this->table.' (quote, author_id, category_id) 
         VALUES(:quote,:author_id,:category_id)";
     
     // create stmt and execute
@@ -136,7 +135,8 @@ public function create() {
 }
 //update quotes
 public function update() {
-    $query ="UPDATE ".$this->table." SET 
+    $query ="UPDATE '.$this->table.'
+     SET 
         id = :id,
         quote = :quote,
         author_id = :author_id,
@@ -174,7 +174,7 @@ public function update() {
 
 public function delete() {
 
-    $query ="DELETE FROM ".$this->table." WHERE id = :id";
+    $query ="DELETE FROM '.$this->table.' WHERE id = :id";
  
     
     $stmt = $this->conn->prepare($query);
